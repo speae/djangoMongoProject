@@ -6,4 +6,4 @@ from django.contrib import admin
 from . import models
 
                       # Article
-admin.site.register([models.Question, models.Choice])
+# admin.site.register([models.Question, models.Choice])

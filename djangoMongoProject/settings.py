@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5a#-x76ldij+5@!9u_sj@)-+fj5z#%c#or*)ffn+1@5baut5kg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_api.apps.RestApiConfig'
+    'corsheaders',
+    'rest_framework',
+    'rest_api'
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoMongoProject.urls'
@@ -79,8 +84,13 @@ WSGI_APPLICATION = 'djangoMongoProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'djongo',
+        'NAME': 'test_db',
+        'HOST': '127.0.0.1',
+        'PORT': 27017,
     }
 }
 
